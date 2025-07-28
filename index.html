@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projet Professionnel Personnalisé - Ihab Souey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f8fafc; /* slate-50 */
+      }
+      .chart-container {
+        position: relative;
+        width: 100%;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        height: 300px;
+      }
+      @media (min-width: 768px) {
+        .chart-container {
+          height: 400px;
+        }
+      }
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        top: 12px;
+        left: -21px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #14b8a6; /* teal-500 */
+        border: 2px solid #f1f5f9; /* slate-100 */
+      }
+    </style>
+  </head>
+  <body class="text-slate-700">
+    <!-- Header & Navigation -->
+    <header
+      id="header"
+      class="bg-slate-50/80 backdrop-blur-lg sticky top-0 z-50 transition-all duration-300"
+    >
+      <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between h-16">
+          <h1 class="text-xl font-bold text-teal-600">Ihab Souey</h1>
+          <nav class="hidden md:flex space-x-8">
+            <a
+              href="#parcours"
+              class="font-medium text-slate-600 hover:text-teal-600 transition-colors"
+              >Parcours</a
+            >
+            <a
+              href="#competences"
+              class="font-medium text-slate-600 hover:text-teal-600 transition-colors"
+              >Compétences</a
+            >
+            <a
+              href="#vision"
+              class="font-medium text-slate-600 hover:text-teal-600 transition-colors"
+              >Vision</a
+            >
+            <a
+              href="#contact"
+              class="font-medium text-slate-600 hover:text-teal-600 transition-colors"
+              >Contact</a
+            >
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8 md:py-16">
+      <!-- Hero Section -->
+      <section id="hero" class="text-center mb-24">
+        <h2 class="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
+          Développeur Web & Mobile
+        </h2>
+        <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto">
+          Passionné par la création de solutions logicielles innovantes, je me
+          spécialise en développement Front-End avec une expertise en Angular et
+          React. Mon projet professionnel est de devenir un ingénieur de premier
+          plan, contribuant à des produits qui allient performance technique et
+          expérience utilisateur exceptionnelle.
+        </p>
+      </section>
+
+      <!-- Parcours Section -->
+      <section id="parcours" class="mb-24">
+        <div class="text-center mb-12">
+          <h3 class="text-3xl font-bold text-slate-800">Mon Parcours</h3>
+          <p class="text-lg text-slate-600 mt-2">
+            Un cheminement entre la Tunisie et la France, alliant théorie et
+            pratique.
+          </p>
+        </div>
+
+        <div class="flex justify-center mb-8">
+          <div class="bg-slate-200 p-1 rounded-lg">
+            <button
+              id="btn-academique"
+              class="px-4 py-2 text-sm font-semibold rounded-md bg-white text-teal-600 shadow"
+            >
+              Académique
+            </button>
+            <button
+              id="btn-professionnel"
+              class="px-4 py-2 text-sm font-semibold rounded-md text-slate-600"
+            >
+              Professionnel
+            </button>
+          </div>
+        </div>
+
+        <div
+          id="timeline-container"
+          class="relative max-w-3xl mx-auto border-l-2 border-slate-200 pl-8 py-4"
+        >
+          <!-- Timeline items will be injected here by JavaScript -->
+        </div>
+      </section>
+
+      <!-- Compétences Section -->
+      <section id="competences" class="mb-24">
+        <div class="text-center mb-12">
+          <h3 class="text-3xl font-bold text-slate-800">
+            Bilan des Compétences
+          </h3>
+          <p class="text-lg text-slate-600 mt-2">
+            Une cartographie de mes savoir-faire techniques et qualités
+            professionnelles.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h4 class="text-xl font-semibold text-center mb-4 text-slate-800">
+              Domaines de Savoir-Faire
+            </h4>
+            <div class="chart-container">
+              <canvas id="skillsRadarChart"></canvas>
+            </div>
+          </div>
+          <div>
+            <h4 class="text-xl font-semibold text-center mb-4 text-slate-800">
+              Technologies Front-End
+            </h4>
+            <div class="w-full max-w-xl mx-auto">
+              <canvas id="frontendBarChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-16">
+          <h4 class="text-xl font-semibold text-center mb-8 text-slate-800">
+            Savoir-Être
+          </h4>
+          <div
+            id="soft-skills-container"
+            class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 text-center"
+          >
+            <!-- Soft skills will be injected here -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Vision Section -->
+      <section id="vision" class="mb-24">
+        <div class="text-center mb-12">
+          <h3 class="text-3xl font-bold text-slate-800">
+            Vision & Plan de Carrière
+          </h3>
+          <p class="text-lg text-slate-600 mt-2">
+            Mes aspirations, les secteurs qui m'inspirent et ma projection
+            professionnelle.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="text-xl font-semibold text-center mb-8 text-slate-800">
+            Secteurs d'Intérêt
+          </h4>
+          <div
+            id="sectors-container"
+            class="flex flex-wrap justify-center gap-6 mb-12"
+          >
+            <!-- Sectors will be injected here -->
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-xl font-semibold text-center mb-8 text-slate-800">
+            Objectifs de Carrière
+          </h4>
+          <div id="career-plan-container" class="space-y-8">
+            <!-- Career plan will be injected here -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="text-center bg-slate-100 py-16 rounded-lg">
+        <div class="text-center mb-8">
+          <h3 class="text-3xl font-bold text-slate-800">
+            Conclusion & Contact
+          </h3>
+        </div>
+        <p class="max-w-3xl mx-auto text-slate-600 mb-8">
+          Ce projet professionnel est le reflet de ma passion pour la
+          technologie et de mon ambition de construire une carrière solide et
+          durable. Je suis convaincu que ma polyvalence, ma rigueur et ma
+          capacité d'adaptation sont des atouts majeurs. Prêt à relever de
+          nouveaux défis, je suis ouvert aux opportunités qui me permettront de
+          continuer à apprendre et à créer de la valeur.
+        </p>
+        <a
+          href="mailto:ihab.souey@example.com"
+          class="bg-teal-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-teal-700 transition-colors"
+          >Contactez-moi</a
+        >
+      </section>
+    </main>
+
+    <script>
+      const academicData = [
+        {
+          date: "2021-2025",
+          title: "Master of Science (MSc) – ESTIAM, Paris",
+          description:
+            "Spécialisation en Web & Mobile Development, complétée par une approche orientée produit, UX/UI et développement full-stack en alternance.",
+        },
+        {
+          date: "2022-2024",
+          title:
+            "Diplôme d’ingénieur en sciences du numérique – TEK-UP (Tunisie)",
+          description:
+            "Renforcement des compétences en ingénierie logicielle (Angular, React, Python, Flask). Semestre d’échange à CESI Rouen, France.",
+        },
+        {
+          date: "2018-2021",
+          title:
+            "Licence en technologies de l’informatique – Iset Rades (Tunisie)",
+          description:
+            "Acquisition des fondamentaux de l’informatique : algorithmique, bases de données, architecture logicielle. Projet de fin d'études : application mobile de gestion de stock.",
+        },
+        {
+          date: "2018",
+          title: "Baccalauréat en Sciences de l'Informatique – Tunisie",
+          description:
+            "Obtention du baccalauréat avec mention 'Assez bien', jetant les bases de ma passion pour le domaine.",
+        },
+      ];
+
+      const professionalData = [
+        {
+          date: "2025",
+          title: "Développeur / Intégrateur (Alternance) – Fitle, Paris",
+          description:
+            "Intégration technique de clients et suivi des connexions e-shop. Technologies : React, Python, REST API, Shopify dans un environnement agile.",
+        },
+        {
+          date: "2024",
+          title: "Développeur Front-End (Stage) – CFM, Paris",
+          description:
+            "Refonte d’interfaces utilisateur en Angular avec un focus sur l'amélioration UX/UI et la performance logicielle dans le secteur financier.",
+        },
+        {
+          date: "2023-2024",
+          title: "Développeur Front-End (Freelance) – Expertify, Paris",
+          description:
+            "Développement de sites vitrines avec Next.js et React, intégrant Tailwind CSS et des appels API. Gestion de projets en autonomie.",
+        },
+        {
+          date: "2023",
+          title: "Instructeur Python – GoMyCode, Tunis",
+          description:
+            "Animation de formations Python pour débutants, développant mes compétences pédagogiques et de vulgarisation technique.",
+        },
+        {
+          date: "2022",
+          title: "Junior Consultant (Stage) – Global Consultant, Dubaï",
+          description:
+            "Contribution à l’analyse des besoins clients et à la conception de solutions, découvrant les dimensions stratégiques du métier.",
+        },
+      ];
+
+      const softSkills = [
+        { name: "Autonomie", icon: " autonomia" },
+        { name: "Adaptabilité", icon: " adaptabilidad" },
+        { name: "Communication", icon: " comunicacion" },
+        { name: "Esprit d’équipe", icon: " equipo" },
+        { name: "Sens de l’analyse", icon: " analisis" },
+      ];
+
+      const sectors = ["E-commerce", "Intelligence Artificielle", "SaaS"];
+
+      const careerPlan = [
+        {
+          horizon: "À 1 an",
+          goal: "Obtenir un premier CDI en tant que développeur, intégrer une équipe technique solide et contribuer à des projets complexes, idéalement avec une part de télétravail.",
+        },
+        {
+          horizon: "À 3 ans",
+          goal: "Atteindre un niveau confirmé/senior, prendre en charge des projets de bout en bout et commencer à coacher des profils juniors.",
+        },
+        {
+          horizon: "À 5 ans",
+          goal: "Devenir Tech Lead sur un produit structurant, guider une équipe technique et faire des choix d’architecture clés.",
+        },
+        {
+          horizon: "À 10 ans",
+          goal: "Progresser vers le leadership technique ou me diriger vers un projet entrepreneurial, en gardant un fort ancrage technique.",
+        },
+      ];
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const timelineContainer = document.getElementById("timeline-container");
+        const btnAcademique = document.getElementById("btn-academique");
+        const btnProfessionnel = document.getElementById("btn-professionnel");
+
+        function renderTimeline(data) {
+          timelineContainer.innerHTML = "";
+          data.forEach((item) => {
+            const div = document.createElement("div");
+            div.className = "timeline-item mb-8";
+            div.innerHTML = `
+                        <p class="text-sm font-semibold text-teal-600">${item.date}</p>
+                        <h5 class="font-bold text-slate-800 mt-1">${item.title}</h5>
+                        <p class="text-slate-600 text-sm mt-1">${item.description}</p>
+                    `;
+            timelineContainer.appendChild(div);
+          });
+        }
+
+        btnAcademique.addEventListener("click", () => {
+          renderTimeline(academicData);
+          btnAcademique.classList.add("bg-white", "text-teal-600", "shadow");
+          btnProfessionnel.classList.remove(
+            "bg-white",
+            "text-teal-600",
+            "shadow"
+          );
+        });
+
+        btnProfessionnel.addEventListener("click", () => {
+          renderTimeline(professionalData);
+          btnProfessionnel.classList.add("bg-white", "text-teal-600", "shadow");
+          btnAcademique.classList.remove("bg-white", "text-teal-600", "shadow");
+        });
+
+        renderTimeline(academicData);
+
+        // Skills Charts
+        const radarCtx = document
+          .getElementById("skillsRadarChart")
+          .getContext("2d");
+        new Chart(radarCtx, {
+          type: "radar",
+          data: {
+            labels: [
+              "Front-End",
+              "Back-End",
+              "UX/UI",
+              "Bases de Données",
+              "Méthodologies",
+            ],
+            datasets: [
+              {
+                label: "Niveau de Maîtrise",
+                data: [9, 7, 7, 8, 9],
+                backgroundColor: "rgba(20, 184, 166, 0.2)",
+                borderColor: "rgba(13, 148, 136, 1)",
+                pointBackgroundColor: "rgba(13, 148, 136, 1)",
+                pointBorderColor: "#fff",
+                pointHoverBackgroundColor: "#fff",
+                pointHoverBorderColor: "rgba(13, 148, 136, 1)",
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              r: {
+                angleLines: { color: "rgba(0, 0, 0, 0.1)" },
+                grid: { color: "rgba(0, 0, 0, 0.1)" },
+                pointLabels: { font: { size: 14 } },
+                ticks: {
+                  backdropColor: "transparent",
+                  stepSize: 2,
+                },
+                suggestedMin: 0,
+                suggestedMax: 10,
+              },
+            },
+            plugins: {
+              legend: { display: false },
+            },
+          },
+        });
+
+        const frontendCtx = document
+          .getElementById("frontendBarChart")
+          .getContext("2d");
+        new Chart(frontendCtx, {
+          type: "bar",
+          data: {
+            labels: [
+              "Angular",
+              "React",
+              "Next.js",
+              "JavaScript/TS",
+              "Tailwind CSS",
+            ],
+            datasets: [
+              {
+                label: "Maîtrise",
+                data: [9, 9, 8, 9, 9],
+                backgroundColor: [
+                  "#14b8a6",
+                  "#0d9488",
+                  "#0f766e",
+                  "#115e59",
+                  "#134e4a",
+                ],
+                borderRadius: 4,
+              },
+            ],
+          },
+          options: {
+            indexAxis: "y",
+            responsive: true,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                callbacks: {
+                  label: function (context) {
+                    let label = context.dataset.label || "";
+                    if (label) {
+                      label += ": ";
+                    }
+                    if (context.parsed.x !== null) {
+                      label += `${context.parsed.x}/10`;
+                    }
+                    return label;
+                  },
+                },
+              },
+            },
+            scales: {
+              x: {
+                beginAtZero: true,
+                max: 10,
+                grid: { display: false },
+              },
+              y: {
+                grid: { display: false },
+              },
+            },
+          },
+        });
+
+        // Soft Skills
+        const softSkillsContainer = document.getElementById(
+          "soft-skills-container"
+        );
+        softSkills.forEach((skill) => {
+          const div = document.createElement("div");
+          div.className =
+            "bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow";
+          div.innerHTML = `<p class="font-semibold text-slate-800">${skill.name}</p>`;
+          softSkillsContainer.appendChild(div);
+        });
+
+        // Sectors
+        const sectorsContainer = document.getElementById("sectors-container");
+        sectors.forEach((sector) => {
+          const span = document.createElement("span");
+          span.className =
+            "bg-teal-100 text-teal-800 text-md font-medium px-4 py-2 rounded-full";
+          span.textContent = sector;
+          sectorsContainer.appendChild(span);
+        });
+
+        // Career Plan
+        const careerPlanContainer = document.getElementById(
+          "career-plan-container"
+        );
+        careerPlan.forEach((plan) => {
+          const div = document.createElement("div");
+          div.className = "bg-white p-6 rounded-lg shadow-sm";
+          div.innerHTML = `
+                    <h5 class="font-bold text-lg text-teal-600">${plan.horizon}</h5>
+                    <p class="mt-2 text-slate-600">${plan.goal}</p>
+                `;
+          careerPlanContainer.appendChild(div);
+        });
+      });
+    </script>
+  </body>
+</html>
